@@ -12,7 +12,7 @@ new Vue({
   data () {
     return {
       on: true,
-      message: 'R2D2 Family',
+      message: 'Quel robot es-tu ?',
       message2: '',
       nom: '',
       prenom: '',
@@ -40,7 +40,7 @@ new Vue({
   filters: {
     enAvatar (personne, index) {
       index++;
-      return 'https://robohash.org/' + personne.nom + '/';
+      return 'https://robohash.org/' + personne.prenom + personne.nom + '/';
     }
   }
   // router,
