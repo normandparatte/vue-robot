@@ -6,10 +6,28 @@ import Vue from 'vue';
 
 Vue.config.productionTip = false;
 
+const CLE_VALEURS_LISTE = 'ValeursListe';
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   data () {
+    let maList;
+    try {
+      maList = JSON.parse(localStorage.getItem(CLE_VALEURS_LISTE));
+
+      // Protection si null
+      if (!maList) {
+        throw new Error();
+      }
+    } catch (e) {
+      maList = [{
+        nom: 'Normand',
+        prenom: 'Normand',
+        couleur: '00FFFF'
+      }];
+    }
+
     return {
       on: true,
       message: 'Quel robot es-tu ?',
@@ -17,16 +35,8 @@ new Vue({
       nom: '',
       prenom: '',
       couleur: '',
-      maList: [{
-        nom: 'Paratte',
-        prenom: 'Normand',
-        couleur: '#00EEEE'
-      },
-      {
-        nom: 'Voyame',
-        prenom: 'Mael',
-        couleur: '#EE00EE'
-      }]
+      query: '',
+      maList
     };
   },
   methods: {
@@ -41,6 +51,21 @@ new Vue({
     enAvatar (personne, index) {
       index++;
       return 'https://robohash.org/' + personne.prenom + personne.nom + '/';
+    }
+  },
+  computed: {
+    listeFiltree () {
+      return this.maList.filter(personne => {
+        return personne.nom.toLowerCase().indexOf(this.query.toLowerCase()) > -1 || personne.prenom.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
+      });
+    }
+  },
+  watch: {
+    maList: {
+      handler () {
+        localStorage.setItem(CLE_VALEURS_LISTE, JSON.stringify(this.maList));
+      },
+      deep: true
     }
   }
   // router,
