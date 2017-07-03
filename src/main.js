@@ -32,6 +32,9 @@ new Vue({
   methods: {
     ajouterPersonneListe () {
       this.maList.push({nom: this.nom, prenom: this.prenom, couleur: this.couleur});
+    },
+    retirerPersonneListe (index) {
+      this.maList.splice(index - 1, 1);
     }
   },
   filters: {
