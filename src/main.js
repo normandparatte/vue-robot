@@ -33,14 +33,14 @@ new Vue({
     ajouterPersonneListe () {
       this.maList.push({nom: this.nom, prenom: this.prenom, couleur: this.couleur});
     },
-    retirerPersonneListe (index) {
-      this.maList.splice(index - 1, 1);
+    retirerPersonneListe (personne) {
+      this.maList.splice(this.maList.indexOf(personne), 1);
     }
   },
   filters: {
     enAvatar (personne, index) {
       index++;
-      return 'https://robohash.org/' + index + '/';
+      return 'https://robohash.org/' + personne.nom + '/';
     }
   }
   // router,

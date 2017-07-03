@@ -22,7 +22,7 @@
         <li v-for="(personne, index) in maList" v-bind:style="{color: personne.couleur}" v-bind:class="{ws: index===1}">
           {{ index+1 }} {{ personne.nom }} {{ personne.prenom }}
           <img v-bind:src="personne | enAvatar(index)"/>
-          <input type="button" v-on:click="{retirerPersonneListe()}" value="Supprimer de la liste"> 
+          <input type="button" v-on:click="{retirerPersonneListe(personne)}" value="Supprimer de la liste"> 
         </li>
       </ul>
     </div>
