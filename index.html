@@ -3,9 +3,23 @@
   <head>
     <meta charset="utf-8">
     <title>vue_test</title>
+    <style>
+      .ws{
+        background-color: whitesmoke;
+      }
+    </style>
   </head>
   <body>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <div id="app">
+      <h1 v-if="on">
+        {{message}}
+      </h1>
+      <ul>
+        <li v-for="(personne, index) in maList" v-bind:style="{color: '#'+personne.couleur}" v-bind:class="{ws: index===1}">
+          {{ index+1 }} {{ personne.nom }} {{ personne.prenom }}
+          <img v-bind:src="personne | enAvatar(index)"/>
+        </li>
+      </ul>
+    </div>
   </body>
 </html>
