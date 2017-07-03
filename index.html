@@ -14,8 +14,12 @@
       <h1 v-if="on">
         {{message}}
       </h1>
+      <input type="text" v-model="nom" placeholder="Nom">
+      <input type="text" v-model="prenom" placeholder="Prénom">
+      <input type="color" v-model="couleur" placeholder="Couleur">
+      <input type="button" v-on:click="{ajouterPersonneListe()}" value="Ajouter">        
       <ul>
-        <li v-for="(personne, index) in maList" v-bind:style="{color: '#'+personne.couleur}" v-bind:class="{ws: index===1}">
+        <li v-for="(personne, index) in maList" v-bind:style="{color: personne.couleur}" v-bind:class="{ws: index===1}">
           {{ index+1 }} {{ personne.nom }} {{ personne.prenom }}
           <img v-bind:src="personne | enAvatar(index)"/>
         </li>

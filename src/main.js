@@ -12,23 +12,32 @@ new Vue({
   data () {
     return {
       on: true,
-      message: 'Hello world',
+      message: 'R2D2 Family',
+      message2: '',
+      nom: '',
+      prenom: '',
+      couleur: '',
       maList: [{
         nom: 'Paratte',
         prenom: 'Normand',
-        couleur: '00EEEE'
+        couleur: '#00EEEE'
       },
       {
         nom: 'Voyame',
         prenom: 'Mael',
-        couleur: 'EE00EE'
+        couleur: '#EE00EE'
       }]
     };
+  },
+  methods: {
+    ajouterPersonneListe () {
+      this.maList.push({nom: this.nom, prenom: this.prenom, couleur: this.couleur});
+    }
   },
   filters: {
     enAvatar (personne, index) {
       index++;
-      return 'https://api.adorable.io/avatars/face/eyes' + index + '/nose' + index + '/mouth' + index + '/' + personne.couleur;
+      return 'https://robohash.org/' + index + '/';
     }
   }
   // router,
