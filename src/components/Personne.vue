@@ -1,6 +1,6 @@
 <template>
     <div v-bind:style="{color: personne.couleur}">
-        {{ numero }} {{ personne.nom }} {{ personne.prenom }}
+        {{ numero }} <router-link v-bind:to="{name: 'Search', params: {query: personne.nom+personne.prenom}}">{{ personne.nom }} {{ personne.prenom }}</router-link>
         <img v-bind:src="personne | enAvatar(numero)">
         <input type="button" v-on:click="$emit('retirerPersonne',[personne])" value="Supprimer de la liste"> 
     </div>
