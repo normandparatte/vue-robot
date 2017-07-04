@@ -8,17 +8,12 @@
       <input type="color" v-model="couleur" placeholder="Couleur">
       <input type="button" v-on:click="ajouterPersonneListe()" value="Ajouter">     
       <input type="text" v-model="query" placeholder="Rechercher">  
-      <ul>
-        <li v-for="(personne, index) in listeFiltree" v-bind:key="index" v-bind:style="{color: personne.couleur}" v-bind:class="{ws: index===1}">
-          {{ index+1 }} {{ personne.nom }} {{ personne.prenom }}
-          <img v-bind:src="personne | enAvatar(index)">
-          <input type="button" v-on:click="retirerPersonneListe(personne)" value="Supprimer de la liste"> 
-        </li>
-      </ul>
+      <personne v-for="(personne, index) in listeFiltree" v-bind:key="index" v-bind:personne="personne" v-bind:numero="index+1" v-on:retirerPersonne="retirerPersonneListe"></personne>
   </div>
 </template>
 
 <script>
+import Personne from './Personne';
 const CLE_VALEURS_LISTE = 'ValeursListe';
 
 export default {
@@ -59,12 +54,6 @@ export default {
       this.maList.splice(this.maList.indexOf(personne), 1);
     }
   },
-  filters: {
-    enAvatar (personne, index) {
-      index++;
-      return 'https://robohash.org/' + personne.prenom + personne.nom + '/';
-    }
-  },
   computed: {
     listeFiltree () {
       return this.maList.filter(personne => {
@@ -79,17 +68,11 @@ export default {
       },
       deep: true
     }
-  }
+  },
+  components: { Personne }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .ws{
-    background-color: whitesmoke;
-  }
-
-  img{
-    max-width: 150px;
-}
 </style>
