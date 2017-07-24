@@ -1,21 +1,5 @@
 # vue_test
 
-> A Vue.js project
+> Ce site à été réalisé dans le cadre du cours "Projet de technologies WEB". Il a été réalisé dans le but d'apprendre et de se familiariser avec vuejs, npm et webpack.
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+> Il est disponible à l'adresse suivante : [https://normandparatte.github.io/vue-robot/](https://normandparatte.github.io/vue-robot/).
